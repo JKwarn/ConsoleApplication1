@@ -1,5 +1,5 @@
-﻿#include <iostream>
-#include <string>// std::stoull
+﻿#include "iostream"
+#include "string"
 
 
 struct MyStruct
@@ -17,10 +17,11 @@ int main()
     uint32_t z = std::stoul(x);
 
     MyStruct my;
-    my.int_ = y > UINT32_MAX ? UINT32_MAX : y;  // warning C4244.
+    my.int_ = y > UINT32_MAX ? UINT32_MAX : y;  //  C4244.
 
-    // my.short_ = y > UINT16_MAX ? UINT16_MAX : y; // warning C4244 too.
-    my.short_ = z > UINT16_MAX ? UINT16_MAX : z;
+    my.short_ = y > UINT16_MAX ? UINT16_MAX : y; // C4244 too.
+
+    my.short_ = z > UINT16_MAX ? UINT16_MAX : z; // OK.
 
 
     // uint64_t y > my.int_, uint32_t z > short_.
